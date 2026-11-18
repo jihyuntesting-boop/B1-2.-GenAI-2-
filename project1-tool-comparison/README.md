@@ -1,6 +1,6 @@
 # 프로젝트 1 — 자동화 도구 비교 구현 (Make vs Zapier)
 
-> ⚠️ **상태: Make 구현·검증 완료 / Zapier 미구현.** 과제 요건(도구 2개 이상)은 아직 충족하지 못함. Zapier 계정 로그인이 되지 않아 보류.
+> ✅ **상태: Make · Zapier 두 도구 모두 구현, pass/fail 두 경로 실행 확인.** (Zapier 는 14일 Professional 체험판으로 구현 — 아래 '유료 기능' 참고)
 
 ## 워크플로우
 
@@ -21,12 +21,12 @@ flowchart LR
 
 | 요구 | Make | Zapier |
 |---|---|---|
-| Trigger 1+ | Custom Webhook (폼 제출 대역) | ⏳ 미구현 |
-| 조건 분기 1+ | Router (`score ≥ 80` pass / `score < 80` fail) | ⏳ 미구현 |
-| Action 2+ | Data store – Update a record + Tools – Set variable | ⏳ 미구현 |
-| 두 분기 모두 실행 확인 | ✅ pass 1회 ✅ fail 1회 | ⏳ |
+| Trigger 1+ | Custom Webhook (폼 제출 대역) | Webhooks by Zapier – Catch Hook |
+| 조건 분기 1+ | Router (`score ≥ 80` pass / `score < 80` fail) | Paths: Path A `score > 79`, Path B `score < 80` |
+| Action 2+ | Data store – Update a record + Tools – Set variable (경로당 2개) | Email by Zapier – Send Outbound Email (경로당 1개, 총 2개) |
+| 두 분기 모두 실행 확인 | ✅ pass 1회 ✅ fail 1회 | ✅ Path A 1회 (92점) ✅ Path B 1회 (55점) |
 
-> Zapier 무료 플랜은 Paths/다중 단계 제약이 있을 수 있음. 막히면 Filter 2개 Zap으로 분리하고 그 이유를 보고서에 기록.
+> **Zapier 유료 기능 사용**: *Webhooks by Zapier* 는 Premium 앱, *Paths* 는 상위 플랜 기능이며 14일 체험판 기간에만 사용 가능. 무료 대안은 보고서 참고.
 
 ## 테스트 데이터
 
@@ -51,11 +51,10 @@ flowchart LR
 ### Zapier → `zapier/screenshots/`
 | 파일 | 내용 |
 |---|---|
-| `01-zap-overview.png` | 전체 Zap 구성 |
-| `02-filter-or-paths.png` | 분기 조건 설정 |
-| `03-run-pass.png` | 합격 경로 실행 결과 |
-| `04-run-fail.png` | 불합격 경로 실행 결과 |
-| `05-history.png` | Zap/Task History |
+| `01-zap-overview.jpg` | 전체 Zap 구성 (Catch Hook → Paths A/B → Email) |
+| `03-run-pass.jpg` | 92점 실행 — Path A 활성, Path B 차단 |
+| `04-run-fail.jpg` | 55점 실행 — Path B 활성, Path A 차단 |
+| `05-history.jpg` | Zap history (성공 2건) |
 
 ## 구현 과정 요약
 
@@ -65,7 +64,11 @@ flowchart LR
 3. 각 경로에 Data store(`score-results`) *Update a record* + Tools *Set variable* 추가.
 4. `Run once` 로 92점(pass), 55점(fail) 데이터를 각각 보내 두 경로가 1회씩 실행됨을 확인.
 
-**Zapier**
-- ⏳ 미수행 (계정 로그인 문제로 이번 제출 시점에 구현하지 못함). 과제 요건상 도구 2개 이상 필요하므로 **추후 구현 필요**.
+**Zapier** (Zap `Form Score Router (Zapier)`)
+1. Webhooks by Zapier – Catch Hook 으로 트리거 생성, 더미 JSON 전송 후 Test trigger 로 필드(Name/Email/Score) 인식.
+2. Paths 추가: Path A 조건 `Score (Number) Greater than 79`, Path B 조건 `Score (Number) Less than 80`.
+3. 각 Path 에 Email by Zapier – Send Outbound Email (제목 `[PASS]`/`[FAIL]`).
+4. Publish 후 92점·55점을 각각 전송 → Zap history 에서 Path A / Path B 가 각각 1회씩 실행됨을 확인.
+- 참고: 이메일 수신자는 placeholder 이며, 체험/무료 플랜에서는 테스트 메일이 계정 이메일로만 발송됨.
 
 비교 분석은 [comparison-report.md](comparison-report.md).

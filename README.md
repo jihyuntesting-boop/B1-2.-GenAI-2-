@@ -18,6 +18,10 @@ Make · Zapier 등 노코드 자동화 도구로 **Trigger → (조건 분기) �
 │   │       └── 04-run-fail.jpg
 │   └── zapier/
 │       └── screenshots/
+│           ├── 01-zap-overview.jpg
+│           ├── 03-run-pass.jpg
+│           ├── 04-run-fail.jpg
+│           └── 05-history.jpg
 ├── project2-free-topic/
 │   ├── README.md
 │   └── screenshots/
@@ -37,8 +41,8 @@ Make · Zapier 등 노코드 자동화 도구로 **Trigger → (조건 분기) �
 | 항목 | 상태 |
 |---|---|
 | 프로젝트 1 – Make 구현·실행(pass/fail 두 경로) | ✅ |
-| 프로젝트 1 – 2번째 도구(Zapier) 구현 | ⏳ 미구현 (로그인 불가) |
-| 프로젝트 1 – 비교 보고서 | ⏳ Make 칸만 작성, Zapier 칸 대기 |
+| 프로젝트 1 – 2번째 도구(Zapier) 구현·실행(Path A/B 두 경로) | ✅ (14일 체험판 사용) |
+| 프로젝트 1 – 비교 보고서 | ✅ 작성 (비교 7항목, 장단점, 유료 기능 사유) |
 | 프로젝트 2 – Make 자동 실행(Active, Instant)·필터 통과/차단 | ✅ |
 | 프로젝트 2 – Slack 전송 · 시트 이력 | ⏳ 미구현 (README "한계" 참고) |
 | 보너스 | ⏳ 미수행 |
