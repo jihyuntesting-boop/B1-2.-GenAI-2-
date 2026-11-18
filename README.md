@@ -6,22 +6,42 @@ Make · Zapier 등 노코드 자동화 도구로 **Trigger → (조건 분기) �
 
 ```text
 .
-├── README.md                          # 이 문서 (개요 · 제출물 체크리스트)
-├── project1-tool-comparison/          # [프로젝트 1] 자동화 도구 비교 구현
-│   ├── README.md                      #   워크플로우 명세 + 도구별 구현 과정
-│   ├── comparison-report.md           #   비교 분석 보고서
-│   ├── make/screenshots/              #   Make 구성 · 실행 결과 캡처
-│   └── zapier/screenshots/            #   Zapier 구성 · 실행 결과 캡처
-├── project2-free-topic/               # [프로젝트 2] 자유 주제 자동화
-│   ├── README.md                      #   업무 정의 · 도구 선정 이유 · 설계 문서
-│   └── screenshots/                   #   구현 · 실행 결과 캡처
-├── bonus/                             # [보너스] 선택
-│   ├── ai-action/                     #   생성형 AI Action 추가
-│   └── failure-handling/              #   실패 알림 · 재시도 전략
+├── README.md
+├── .gitignore
+├── project1-tool-comparison/
+│   ├── README.md
+│   ├── comparison-report.md
+│   ├── make/
+│   │   └── screenshots/
+│   │       ├── 01-scenario-overview.jpg
+│   │       ├── 03-run-pass.jpg
+│   │       └── 04-run-fail.jpg
+│   └── zapier/
+│       └── screenshots/
+├── project2-free-topic/
+│   ├── README.md
+│   └── screenshots/
+│       ├── 01-scenario-overview.jpg
+│       └── 03-trigger-auto-run-history.jpg
+├── bonus/
+│   ├── README.md
+│   ├── ai-action/
+│   └── failure-handling/
 └── docs/
-    ├── concepts.md                    # Trigger / Action / Filter·Router 개념 정리
-    └── security-checklist.md          # 제출 전 민감정보 마스킹 점검표
+    ├── concepts.md
+    └── security-checklist.md
 ```
+
+## 진행 상태
+
+| 항목 | 상태 |
+|---|---|
+| 프로젝트 1 – Make 구현·실행(pass/fail 두 경로) | ✅ |
+| 프로젝트 1 – 2번째 도구(Zapier) 구현 | ⏳ 미구현 (로그인 불가) |
+| 프로젝트 1 – 비교 보고서 | ⏳ Make 칸만 작성, Zapier 칸 대기 |
+| 프로젝트 2 – Make 자동 실행(Active, Instant)·필터 통과/차단 | ✅ |
+| 프로젝트 2 – Slack 전송 · 시트 이력 | ⏳ 미구현 (README "한계" 참고) |
+| 보너스 | ⏳ 미수행 |
 
 ## 제출물 체크리스트
 

@@ -11,7 +11,7 @@
 
 ## 2. 구현 과정 요약
 
-- 구현 대상: Google Form 제출 → 점수 분기 → Sheets 기록 + 알림 ([상세](README.md))
+- 구현 대상: 폼 제출(Webhook) → 점수 분기(≥80 pass / <80 fail) → 기록 + 결과 변수 ([상세](README.md))
 - Make: Webhook→Router→Data store→Set variable 구성. Google 연동 없이 가능했고 pass/fail 두 경로 모두 실행 확인. 막힌 점: 무료 Data store 용량(1MB)이 첫 저장소로 소진되어 두 번째 프로젝트에서 저장소를 만들 수 없었음. 캔버스 편집은 AI 어시스턴트(Maia)로 상당 부분 단축.
 - Zapier: _(한두 문단: 막힌 점, 걸린 시간)_
 
